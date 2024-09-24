@@ -11,9 +11,11 @@
         android:id="@+id/botonentrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="371dp" />
+        android:layout_marginBottom="324dp"
+        android:text="Siguiente"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/etnombre"
@@ -22,7 +24,7 @@
         android:layout_marginBottom="78dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Introduzca texto"
+        android:text="Escribe tu nombre"
         app:layout_constraintBottom_toTopOf="@+id/botonentrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
