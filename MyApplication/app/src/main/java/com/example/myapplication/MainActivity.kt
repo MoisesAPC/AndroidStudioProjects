@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -25,9 +26,14 @@ class MainActivity : AppCompatActivity() {
 
         botonentrar.setOnClickListener() {
             // Crear un canal entre la ventana (activity) actual a la segunda ventana (Segunda)
-            val intento1 = Intent(this, Segunda::class.java)
-            intento1.putExtra("nombre", etnombre.text.toString())
-            startActivity(intento1)
+            if (etnombre.text.toString().isNotBlank()) {
+                val intento1 = Intent(this, Segunda::class.java)
+                intento1.putExtra("nombre", etnombre.text.toString())
+                startActivity(intento1)
+            }
+            else {
+                Toast.makeText(this, "El campo está en blanco.", Toast.LENGTH_LONG).show()
+            }
         }
     }
 }
