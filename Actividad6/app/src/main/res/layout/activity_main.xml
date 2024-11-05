@@ -7,13 +7,44 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+        <Spinner
+            android:id="@+id/espiner"
+            android:layout_width="match_parent"
+            android:layout_height="79dp" />
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="543dp">
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="115dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/buttonFragmento1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fragmento 1" />
+
+            <Button
+                android:id="@+id/buttonFragmento2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fragmento 2" />
+        </LinearLayout>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
