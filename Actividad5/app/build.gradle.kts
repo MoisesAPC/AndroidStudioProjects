@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.actividad4"
+    namespace = "com.example.actividad5"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.actividad4"
+        applicationId = "com.example.actividad5"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -32,10 +32,6 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
-    }
-
-    viewBinding {
-        enable = true
     }
 }
 
