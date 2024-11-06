@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layoutDescription="@xml/activity_persistencias_scene"
+    tools:context=".Persistencias">
+
+<TextView
+android:id="@+id/tvpreferencias"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:text="Preferencias" />
+
+<EditText
+android:id="@+id/etmail"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:ems="10"
+android:inputType="text"
+android:text="Name" />
+
+<EditText
+android:id="@+id/etdatos"
+android:layout_width="match_parent"
+android:layout_height="376dp"
+android:ems="10"
+android:gravity="start|top"
+android:inputType="textMultiLine" />
+
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal">
+
+<Button
+    android:id="@+id/grabar"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:text="Grabar" />
+
+<Button
+    android:id="@+id/recuperar"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:text="Recuperar" />
+
+</LinearLayout>
+
+    <Button
+        android:id="@+id/volver"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Volver" />
+</LinearLayout>
