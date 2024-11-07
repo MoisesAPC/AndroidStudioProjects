@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".InsertarActivity" >
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="69dp" />
+
+    <EditText
+        android:id="@+id/nombreEditText"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:ems="10"
+        android:hint="Nombre"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/marcaEditText"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:ems="10"
+        android:hint="Marca"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/precioEditText"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:ems="10"
+        android:hint="Precio"
+        android:inputType="numberDecimal" />
+
+    <CheckBox
+        android:id="@+id/disponibleCheckbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Disponible" />
+
+    <Spinner
+        android:id="@+id/categoriaIdSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="71dp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="196dp" />
+
+    <Button
+        android:id="@+id/insertarSubmitButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="INSERTAR" />
+
+    <Button
+        android:id="@+id/insertarVolverButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="VOLVER" />
+
+</LinearLayout>

@@ -5,4 +5,103 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"/>
+    tools:context=".MainActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/menuAppBar"
+        android:layout_width="406dp"
+        android:layout_height="66dp"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/menuPrincipalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Menú principal"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/menuAppBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/menuAppBar"
+        app:layout_constraintTop_toTopOf="@+id/menuAppBar" />
+
+    <Button
+        android:id="@+id/insertarButton"
+        android:layout_width="250dp"
+        android:layout_height="62dp"
+        android:text="INSERTAR"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menuAppBar"
+        app:layout_constraintVertical_bias="0.097" />
+
+    <Button
+        android:id="@+id/listarButton"
+        android:layout_width="250dp"
+        android:layout_height="62dp"
+        android:text="LISTAR"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menuAppBar"
+        app:layout_constraintVertical_bias="0.736" />
+
+    <Button
+        android:id="@+id/cerrarButton"
+        android:layout_width="251dp"
+        android:layout_height="63dp"
+        android:text="CERRAR"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menuAppBar"
+        app:layout_constraintVertical_bias="0.9" />
+
+    <Button
+        android:id="@+id/buscarButton"
+        android:layout_width="250dp"
+        android:layout_height="62dp"
+        android:text="BUSCAR"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menuAppBar"
+        app:layout_constraintVertical_bias="0.255" />
+
+    <Button
+        android:id="@+id/modificarButton"
+        android:layout_width="250dp"
+        android:layout_height="62dp"
+        android:text="MODIFICAR"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menuAppBar"
+        app:layout_constraintVertical_bias="0.416" />
+
+    <Button
+        android:id="@+id/eliminarButton"
+        android:layout_width="250dp"
+        android:layout_height="62dp"
+        android:text="ELIMINAR"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menuAppBar"
+        app:layout_constraintVertical_bias="0.572" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
