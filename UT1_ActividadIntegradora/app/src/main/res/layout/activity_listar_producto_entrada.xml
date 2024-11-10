@@ -13,6 +13,12 @@
         android:layout_height="26dp" />
 
     <TextView
+        android:id="@+id/tvId"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:text="ID" />
+
+    <TextView
         android:id="@+id/tvNombre"
         android:layout_width="match_parent"
         android:layout_height="43dp"

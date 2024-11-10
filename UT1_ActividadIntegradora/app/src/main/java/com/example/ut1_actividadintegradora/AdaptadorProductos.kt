@@ -12,6 +12,7 @@ class AdaptadorProductos(private val datos: List<Productos>, private val clickLi
     RecyclerView.Adapter<AdaptadorProductos.ProductosViewHolder>() {
 
     class ProductosViewHolder(val item: View) : RecyclerView.ViewHolder(item) {
+        val tvId = item.findViewById<TextView>(R.id.tvId)
         val tvNombre = item.findViewById<TextView>(R.id.tvNombre)
         val tvMarca = item.findViewById<TextView>(R.id.tvMarca)
         val tvPrecio = item.findViewById<TextView>(R.id.tvPrecio)
@@ -19,6 +20,7 @@ class AdaptadorProductos(private val datos: List<Productos>, private val clickLi
         val tvDisponible = item.findViewById<CheckBox>(R.id.tvDisponible)
 
         fun bindProductos(productos: Productos) {
+            tvId.text = "ID: ${productos.id}"
             tvNombre.text = "Nombre: ${productos.nombre}"
             tvMarca.text = "Marca: ${productos.marca}"
             tvPrecio.text = "Precio: ${productos.precio}€"
