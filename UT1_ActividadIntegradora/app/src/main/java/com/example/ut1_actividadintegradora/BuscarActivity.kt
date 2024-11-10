@@ -46,7 +46,7 @@ class BuscarActivity : AppCompatActivity() {
             intent.putExtra("disponible", producto?.disponible)
 
             if (producto == null) {
-                Toast.makeText(this, "NO SE HAN ENCONTRADO EL PRODUCTO $nombre", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "NO SE HA ENCONTRADO EL PRODUCTO $nombre", Toast.LENGTH_LONG).show()
             }
 
             startActivity(intent)

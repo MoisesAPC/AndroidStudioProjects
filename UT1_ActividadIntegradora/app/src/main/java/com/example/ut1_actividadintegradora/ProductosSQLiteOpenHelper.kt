@@ -35,7 +35,7 @@ class ProductosSQLiteOpenHelper(contexto: Context, nombre: String, factory: SQLi
         baseDeDatos!!.execSQL(
             "CREATE TABLE $nombreTablaProductos (\n" +
                     "\tid integer primary key autoincrement,\n" +
-                    "\tnombre varchar(50),\n" +
+                    "\tnombre varchar(50) unique,\n" +
                     "\tmarca varchar(50),\n" +
                     "\tprecio double,\n" +
                     "\tcategoria_id integer,\n" +
@@ -112,6 +112,7 @@ class ProductosSQLiteOpenHelper(contexto: Context, nombre: String, factory: SQLi
     fun modificarProducto(id: Int, nombre: String, marca: String, precio: Double, categoria_id: Int, disponible: Boolean): Int {
         val baseDeDatos = this.writableDatabase
         val registrosTablaProductos = ContentValues().apply {
+            put("id", id)
             put("nombre", nombre)
             put("marca", marca)
             put("precio", precio)
@@ -128,6 +129,12 @@ class ProductosSQLiteOpenHelper(contexto: Context, nombre: String, factory: SQLi
 
         debugMostrarProductos()
         return registrosModificados
+    }
+
+    fun eliminarProducto(id: Int): Int {
+        val baseDeDatos = this.writableDatabase
+
+        return baseDeDatos.delete(nombreTablaProductos, "id = $id", null)
     }
 
     fun cerrarConexion() {

@@ -32,6 +32,8 @@ class MainActivity : AppCompatActivity() {
         val listarButton = binding.listarButton
         val buscarButton = binding.buscarButton
         val cerrarButton = binding.cerrarButton
+        val modificarButton = binding.modificarButton
+        val eliminarButton = binding.eliminarButton
 
         insertarButton.setOnClickListener {
             val intent = Intent(this@MainActivity, InsertarActivity::class.java)
@@ -40,6 +42,16 @@ class MainActivity : AppCompatActivity() {
 
         buscarButton.setOnClickListener {
             val intent = Intent(this@MainActivity, BuscarActivity::class.java)
+            startActivity(intent)
+        }
+
+        modificarButton.setOnClickListener {
+            val intent = Intent(this@MainActivity, ModificarActivity::class.java)
+            startActivity(intent)
+        }
+
+        eliminarButton.setOnClickListener {
+            val intent = Intent(this@MainActivity, EliminarActivity::class.java)
             startActivity(intent)
         }
 
