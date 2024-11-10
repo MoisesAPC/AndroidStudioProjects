@@ -1,6 +1,5 @@
 package com.example.ut1_actividadintegradora
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -17,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main_mainAct)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
@@ -30,6 +29,8 @@ class MainActivity : AppCompatActivity() {
 
         // Accedemos a los componentes utilizando binding.(id del componente)
         val insertarButton = binding.insertarButton
+        val listarButton = binding.listarButton
+        val buscarButton = binding.buscarButton
         val cerrarButton = binding.cerrarButton
 
         insertarButton.setOnClickListener {
@@ -37,8 +38,29 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        buscarButton.setOnClickListener {
+            val intent = Intent(this@MainActivity, BuscarActivity::class.java)
+            startActivity(intent)
+        }
+
         cerrarButton.setOnClickListener {
             finish()
+        }
+
+        listarButton.setOnClickListener {
+            val baseDeDatos = ProductosSQLiteOpenHelper(this@MainActivity, ProductosSQLiteOpenHelper.nombreBaseDeDatos, null, ProductosSQLiteOpenHelper.version)
+            val listaProductos: List<Productos> = baseDeDatos.buscarProductos()
+            baseDeDatos.cerrarConexion()
+
+            val intent = Intent(this, ListarProductosActivity::class.java)
+            if (listaProductos.isEmpty()) {
+                Toast.makeText(this, "NO HAY PRODUCTOS", Toast.LENGTH_LONG).show()
+            }
+            else {
+                //pasamos la lista de productos como ArrayList
+                intent.putExtra("listaProductos", ArrayList(listaProductos))
+                startActivity(intent)
+            }
         }
     }
 }

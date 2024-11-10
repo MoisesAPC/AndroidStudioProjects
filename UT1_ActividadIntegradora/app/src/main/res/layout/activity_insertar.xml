@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/main_mainAct"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -18,7 +18,9 @@
         android:layout_height="60dp"
         android:ems="10"
         android:hint="Nombre"
-        android:inputType="text" />
+        android:inputType="text"
+        android:maxLength="50"
+        android:maxLines="1" />
 
     <EditText
         android:id="@+id/marcaEditText"
@@ -26,7 +28,9 @@
         android:layout_height="65dp"
         android:ems="10"
         android:hint="Marca"
-        android:inputType="text" />
+        android:inputType="text"
+        android:maxLength="50"
+        android:maxLines="1" />
 
     <EditText
         android:id="@+id/precioEditText"
@@ -34,7 +38,9 @@
         android:layout_height="66dp"
         android:ems="10"
         android:hint="Precio"
-        android:inputType="numberDecimal" />
+        android:inputType="numberDecimal"
+        android:maxLength="7"
+        android:maxLines="1" />
 
     <CheckBox
         android:id="@+id/disponibleCheckbox"
