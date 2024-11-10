@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         val cerrarButton = binding.cerrarButton
         val modificarButton = binding.modificarButton
         val eliminarButton = binding.eliminarButton
+        val eliminarTodosButton = binding.eliminarTodosButton
 
         insertarButton.setOnClickListener {
             val intent = Intent(this@MainActivity, InsertarActivity::class.java)
@@ -53,6 +54,19 @@ class MainActivity : AppCompatActivity() {
         eliminarButton.setOnClickListener {
             val intent = Intent(this@MainActivity, EliminarActivity::class.java)
             startActivity(intent)
+        }
+
+        eliminarTodosButton.setOnClickListener {
+            val baseDeDatos = ProductosSQLiteOpenHelper(this@MainActivity, ProductosSQLiteOpenHelper.nombreBaseDeDatos, null, ProductosSQLiteOpenHelper.version)
+            val resultado = baseDeDatos.eliminarTodosLosProductos()
+            baseDeDatos.cerrarConexion()
+
+            if (resultado != 0) {
+                Toast.makeText(this, "ELIMINACIÓN CORRECTA", Toast.LENGTH_SHORT).show()
+            }
+            else {
+                Toast.makeText(this, "ERROR: NO SE PUDO HACER LA ELIMINACIÓN", Toast.LENGTH_SHORT).show()
+            }
         }
 
         cerrarButton.setOnClickListener {

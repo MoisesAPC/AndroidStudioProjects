@@ -34,22 +34,27 @@ class BuscarActivity : AppCompatActivity() {
         buscarActivityButton.setOnClickListener {
             val nombre: String = nombreBusquedaEditText.text.toString()
 
-            val baseDeDatos = ProductosSQLiteOpenHelper(this@BuscarActivity, ProductosSQLiteOpenHelper.nombreBaseDeDatos, null, ProductosSQLiteOpenHelper.version)
-            val producto: Productos? = baseDeDatos.buscarProductoPorNombre(nombre)
-            baseDeDatos.cerrarConexion()
-
-            val intent = Intent(this, ListarProductosActivity::class.java)
-            intent.putExtra("nombre", producto?.nombre)
-            intent.putExtra("marca", producto?.marca)
-            intent.putExtra("precio", producto?.precio)
-            intent.putExtra("categoria_id", producto?.categoria_id)
-            intent.putExtra("disponible", producto?.disponible)
-
-            if (producto == null) {
-                Toast.makeText(this, "NO SE HA ENCONTRADO EL PRODUCTO $nombre", Toast.LENGTH_LONG).show()
+            if (nombre.isEmpty()) {
+                Toast.makeText(this, "ERROR: SE HAN ENCONTRADO STRINGS VACÍAS", Toast.LENGTH_SHORT).show()
             }
+            else {
+                val baseDeDatos = ProductosSQLiteOpenHelper(this@BuscarActivity, ProductosSQLiteOpenHelper.nombreBaseDeDatos, null, ProductosSQLiteOpenHelper.version)
+                val producto: Productos? = baseDeDatos.buscarProductoPorNombre(nombre)
+                baseDeDatos.cerrarConexion()
 
-            startActivity(intent)
+                if (producto == null) {
+                    Toast.makeText(this, "NO SE HA ENCONTRADO EL PRODUCTO $nombre", Toast.LENGTH_LONG).show()
+                }
+                else {
+                    val intent = Intent(this, ListarProductosActivity::class.java)
+                    intent.putExtra("nombre", producto?.nombre)
+                    intent.putExtra("marca", producto?.marca)
+                    intent.putExtra("precio", producto?.precio)
+                    intent.putExtra("categoria_id", producto?.categoria_id)
+                    intent.putExtra("disponible", producto?.disponible)
+                    startActivity(intent)
+                }
+            }
         }
 
         botonVolverBuscarActivity.setOnClickListener {

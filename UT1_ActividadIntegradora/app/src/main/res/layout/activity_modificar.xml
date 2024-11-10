@@ -19,7 +19,9 @@
         android:layout_height="69dp"
         android:ems="10"
         android:hint="Nombre"
-        android:inputType="text" />
+        android:inputType="text"
+        android:maxLength="50"
+        android:maxLines="1" />
 
     <EditText
         android:id="@+id/marcaModificarEd"
@@ -27,7 +29,9 @@
         android:layout_height="69dp"
         android:ems="10"
         android:hint="Marca"
-        android:inputType="text" />
+        android:inputType="text"
+        android:maxLength="50"
+        android:maxLines="1" />
 
     <EditText
         android:id="@+id/PrecioModificarEd"
@@ -35,7 +39,9 @@
         android:layout_height="69dp"
         android:ems="10"
         android:hint="Precio"
-        android:inputType="text" />
+        android:inputType="numberDecimal"
+        android:maxLength="7"
+        android:maxLines="1" />
 
     <Spinner
         android:id="@+id/espinerModificarEd"
@@ -64,7 +70,9 @@
         android:layout_height="65dp"
         android:ems="10"
         android:hint="Nombre"
-        android:inputType="text" />
+        android:inputType="text"
+        android:maxLength="50"
+        android:maxLines="1" />
 
     <Button
         android:id="@+id/buscarButModificar"

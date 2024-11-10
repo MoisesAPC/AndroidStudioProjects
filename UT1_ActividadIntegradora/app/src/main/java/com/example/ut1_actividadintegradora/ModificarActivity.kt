@@ -82,36 +82,64 @@ class ModificarActivity : AppCompatActivity() {
         inicializarSpinnerCategorias(espinerModificarEd, ProductosSQLiteOpenHelper.categorias)
 
         modificarButtonEd.setOnClickListener {
-            val baseDeDatos = ProductosSQLiteOpenHelper(this@ModificarActivity, ProductosSQLiteOpenHelper.nombreBaseDeDatos, null, ProductosSQLiteOpenHelper.version)
-            baseDeDatos.modificarProducto(
-                productoId,
-                modificarNomEd.text.toString(),
-                marcaModificarEd.text.toString(),
-                PrecioModificarEd.text.toString().toDouble(),
-                categoriaSeleccionadaId,
-                disponibleModificarEd.isChecked
-            )
-            baseDeDatos.cerrarConexion()
-            limpiar(modificarNomEd, marcaModificarEd, PrecioModificarEd, disponibleModificarEd)
-            Toast.makeText(this, "MODIFICACIÓN CORRECTA", Toast.LENGTH_SHORT).show()
+            if (modificarNomEd.text.toString().isEmpty() ||
+                marcaModificarEd.text.toString().isEmpty() ||
+                PrecioModificarEd.text.toString().isEmpty()) {
+                Toast.makeText(this, "ERROR: SE HAN ENCONTRADO STRINGS VACÍAS", Toast.LENGTH_SHORT).show()
+            }
+            else {
+                val baseDeDatos = ProductosSQLiteOpenHelper(this@ModificarActivity, ProductosSQLiteOpenHelper.nombreBaseDeDatos, null, ProductosSQLiteOpenHelper.version)
+                val resultado = baseDeDatos.modificarProducto(
+                    productoId,
+                    modificarNomEd.text.toString(),
+                    marcaModificarEd.text.toString(),
+                    PrecioModificarEd.text.toString().toDouble(),
+                    categoriaSeleccionadaId,
+                    disponibleModificarEd.isChecked
+                )
+                baseDeDatos.cerrarConexion()
+                limpiar(modificarNomEd, marcaModificarEd, PrecioModificarEd, disponibleModificarEd)
+
+                if (resultado != 0) {
+                    Toast.makeText(this, "MODIFICACIÓN CORRECTA", Toast.LENGTH_SHORT).show()
+                }
+                else {
+                    Toast.makeText(this, "ERROR: NO SE PUDO HACER LA MODIFICACIÓN", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
 
         buscarButModificar.setOnClickListener {
             val nombre: String = buscarNombreModificarEd.text.toString()
 
-            val baseDeDatos = ProductosSQLiteOpenHelper(this@ModificarActivity, ProductosSQLiteOpenHelper.nombreBaseDeDatos, null, ProductosSQLiteOpenHelper.version)
-            val producto: Productos? = baseDeDatos.buscarProductoPorNombre(nombre)
-            baseDeDatos.cerrarConexion()
-
-            if (producto == null) {
-                Toast.makeText(this, "NO SE HA ENCONTRADO EL PRODUCTO $nombre", Toast.LENGTH_LONG).show()
+            if (nombre.isEmpty()) {
+                Toast.makeText(this, "ERROR: SE HAN ENCONTRADO STRINGS VACÍAS", Toast.LENGTH_SHORT).show()
             }
             else {
-                productoId = producto.id
-                modificarNomEd.setText(producto?.nombre)
-                marcaModificarEd.setText(producto?.marca)
-                PrecioModificarEd.setText(producto?.precio.toString())
-                disponibleModificarEd.isChecked = producto?.disponible == true
+                val baseDeDatos = ProductosSQLiteOpenHelper(this@ModificarActivity, ProductosSQLiteOpenHelper.nombreBaseDeDatos, null, ProductosSQLiteOpenHelper.version)
+                val producto: Productos? = baseDeDatos.buscarProductoPorNombre(nombre)
+                baseDeDatos.cerrarConexion()
+
+                if (producto == null) {
+                    Toast.makeText(this, "NO SE HA ENCONTRADO EL PRODUCTO $nombre", Toast.LENGTH_LONG).show()
+                }
+                else {
+                    productoId = producto.id
+                    modificarNomEd.setText(producto?.nombre)
+                    marcaModificarEd.setText(producto?.marca)
+                    PrecioModificarEd.setText(producto?.precio.toString())
+                    disponibleModificarEd.isChecked = producto?.disponible == true
+
+                    // aqui obtenemos el nombre de la categoria en base a su ID, y luego buscamos dicha categoria en el Spinner
+                    // usando el indexOfFirst, que retorna la posicion de la primera instancia donde encontremos la categoria
+
+                    // La documentatcion del indexOfFirst dice: "Returns index of the first element matching the given"
+                    val nombreCategoria = ProductosSQLiteOpenHelper.obtenerNombreCategoria(producto.categoria_id)
+                    val posicionCategoria = ProductosSQLiteOpenHelper.categorias.indexOfFirst { it.id == producto.categoria_id }
+                    if (posicionCategoria != -1) {
+                        espinerModificarEd.setSelection(posicionCategoria)
+                    }
+                }
             }
         }
 

@@ -11,7 +11,7 @@ class ProductosSQLiteOpenHelper(contexto: Context, nombre: String, factory: SQLi
     // Creamos una pequeña data class que asocia cada nombre de categoría con su ID
     data class Categoria(val id: Int, val nombre: String)
 
-    // Usando el "companion object" + "const val" podemos acceder a estas variables
+    // Usando el "companion object" + "const val" podemos acceder a estas variables y funciones
     // sin necesidad de instanciar un objeto "ProductosSQLiteOpenHelper"
     // (como el "static" en Java)
     companion object {
@@ -26,6 +26,11 @@ class ProductosSQLiteOpenHelper(contexto: Context, nombre: String, factory: SQLi
             Categoria(3, "Lectura"),
             Categoria(4, "Otros")
         )
+
+        // Obtiene el nombre de la categoría en base a su ID
+        fun obtenerNombreCategoria(categoriaId: Int): String {
+            return categorias.find { it.id == categoriaId }?.nombre ?: "Categoría desconocida"
+        }
 
         const val version = 1
     }
@@ -48,7 +53,8 @@ class ProductosSQLiteOpenHelper(contexto: Context, nombre: String, factory: SQLi
         TODO("Not yet implemented")
     }
 
-    fun insertarProducto(nombre: String, marca: String, precio: Double, categoria_id: Int, disponible: Boolean) {
+    // Retorna -1 si ocurrió un error
+    fun insertarProducto(nombre: String, marca: String, precio: Double, categoria_id: Int, disponible: Boolean): Long {
         val baseDeDatos = this.writableDatabase
         val registrosTablaProductos = ContentValues().apply {
             put("nombre", nombre)
@@ -58,11 +64,13 @@ class ProductosSQLiteOpenHelper(contexto: Context, nombre: String, factory: SQLi
             put("disponible", disponible)
         }
 
-        baseDeDatos.insert(nombreTablaProductos, null, registrosTablaProductos)
+        val resultado: Long = baseDeDatos.insert(nombreTablaProductos, null, registrosTablaProductos)
         debugMostrarProductos()
+        return resultado
     }
 
     // (Asumimos que todos los productos tienen un nombre único)
+    // Retorna el objeto de la data class "Productos" encontrado, o "null" en caso contrario
     fun buscarProductoPorNombre(nombre: String): Productos? {
         // Es necesario el "?" para que podamos asignarle el valor null por defecto
         var producto: Productos? = null
@@ -84,6 +92,7 @@ class ProductosSQLiteOpenHelper(contexto: Context, nombre: String, factory: SQLi
         return producto
     }
 
+    // Retorna la lista con los productos
     fun buscarProductos(): List<Productos> {
         // "mutableListOf" es como "listof", pero permite que se pueda modificar el array
         val listaProductos = mutableListOf<Productos>()
@@ -109,6 +118,7 @@ class ProductosSQLiteOpenHelper(contexto: Context, nombre: String, factory: SQLi
         return listaProductos
     }
 
+    // Retorna un número mayor o igual a 1 si la modificación fue correcta, o 0 en caso contrario
     fun modificarProducto(id: Int, nombre: String, marca: String, precio: Double, categoria_id: Int, disponible: Boolean): Int {
         val baseDeDatos = this.writableDatabase
         val registrosTablaProductos = ContentValues().apply {
@@ -131,10 +141,18 @@ class ProductosSQLiteOpenHelper(contexto: Context, nombre: String, factory: SQLi
         return registrosModificados
     }
 
+    // Retorna 1 si la eliminación fue correcta, o 0 en caso contrario
     fun eliminarProducto(id: Int): Int {
         val baseDeDatos = this.writableDatabase
 
         return baseDeDatos.delete(nombreTablaProductos, "id = $id", null)
+    }
+
+    // Retorna 1 si la eliminación fue correcta, o 0 en caso contrario
+    fun eliminarTodosLosProductos(): Int {
+        val baseDeDatos = this.writableDatabase
+
+        return baseDeDatos.delete(nombreTablaProductos, "", null)
     }
 
     fun cerrarConexion() {

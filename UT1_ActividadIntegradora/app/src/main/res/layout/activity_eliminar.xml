@@ -55,7 +55,9 @@
         android:layout_height="65dp"
         android:ems="10"
         android:hint="Nombre"
-        android:inputType="text" />
+        android:inputType="text"
+        android:maxLength="50"
+        android:maxLines="1" />
 
     <Button
         android:id="@+id/buscarButEliminar"

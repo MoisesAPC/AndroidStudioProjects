@@ -42,7 +42,7 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/menuAppBar"
-        app:layout_constraintVertical_bias="0.097" />
+        app:layout_constraintVertical_bias="0.043" />
 
     <Button
         android:id="@+id/listarButton"
@@ -63,10 +63,9 @@
         android:text="CERRAR"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/menuAppBar"
-        app:layout_constraintVertical_bias="0.9" />
+        app:layout_constraintVertical_bias="0.867" />
 
     <Button
         android:id="@+id/buscarButton"
@@ -78,7 +77,7 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/menuAppBar"
-        app:layout_constraintVertical_bias="0.255" />
+        app:layout_constraintVertical_bias="0.179" />
 
     <Button
         android:id="@+id/modificarButton"
@@ -90,7 +89,7 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/menuAppBar"
-        app:layout_constraintVertical_bias="0.416" />
+        app:layout_constraintVertical_bias="0.315" />
 
     <Button
         android:id="@+id/eliminarButton"
@@ -102,6 +101,18 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/menuAppBar"
-        app:layout_constraintVertical_bias="0.572" />
+        app:layout_constraintVertical_bias="0.461" />
+
+    <Button
+        android:id="@+id/eliminarTodosButton"
+        android:layout_width="250dp"
+        android:layout_height="62dp"
+        android:text="ELIMINAR TODOS"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menuAppBar"
+        app:layout_constraintVertical_bias="0.597" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

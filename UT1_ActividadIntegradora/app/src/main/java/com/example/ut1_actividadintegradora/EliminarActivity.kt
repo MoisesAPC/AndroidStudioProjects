@@ -44,6 +44,9 @@ class EliminarActivity : AppCompatActivity() {
                 categoriaSeleccionadaId = 0
             }
         }
+
+        categoriaIdSpinner.isEnabled = false
+        categoriaIdSpinner.isClickable = false
     }
 
     private fun limpiar(nombreEditText: TextView, marcaEditText: TextView, precioEditText: TextView, disponibleCheckbox: CheckBox) {
@@ -81,30 +84,53 @@ class EliminarActivity : AppCompatActivity() {
 
         inicializarSpinnerCategorias(espinerEliminarEd, ProductosSQLiteOpenHelper.categorias)
 
+        disponibleEliminarEd.isEnabled = false
+
         eliminarButonEd.setOnClickListener {
             val baseDeDatos = ProductosSQLiteOpenHelper(this@EliminarActivity, ProductosSQLiteOpenHelper.nombreBaseDeDatos, null, ProductosSQLiteOpenHelper.version)
-            baseDeDatos.eliminarProducto(productoId)
+            val resultado = baseDeDatos.eliminarProducto(productoId)
             baseDeDatos.cerrarConexion()
             limpiar(nomEliminarTv, marcaEliminarTv, precioEliminarTv, disponibleEliminarEd)
-            Toast.makeText(this, "MODIFICACIÓN CORRECTA", Toast.LENGTH_SHORT).show()
+
+            if (resultado != 0) {
+                Toast.makeText(this, "ELIMINACIÓN CORRECTA", Toast.LENGTH_SHORT).show()
+            }
+            else {
+                Toast.makeText(this, "ERROR: NO SE PUDO HACER LA ELIMINACIÓN", Toast.LENGTH_SHORT).show()
+            }
         }
 
         buscarButEliminar.setOnClickListener {
             val nombre: String = buscarNombreEliminarEd.text.toString()
 
-            val baseDeDatos = ProductosSQLiteOpenHelper(this@EliminarActivity, ProductosSQLiteOpenHelper.nombreBaseDeDatos, null, ProductosSQLiteOpenHelper.version)
-            val producto: Productos? = baseDeDatos.buscarProductoPorNombre(nombre)
-            baseDeDatos.cerrarConexion()
-
-            if (producto == null) {
-                Toast.makeText(this, "NO SE HA ENCONTRADO EL PRODUCTO $nombre", Toast.LENGTH_LONG).show()
+            if (nombre.isEmpty()) {
+                Toast.makeText(this, "ERROR: SE HAN ENCONTRADO STRINGS VACÍAS", Toast.LENGTH_SHORT).show()
             }
             else {
-                productoId = producto.id
-                nomEliminarTv.setText(producto?.nombre)
-                marcaEliminarTv.setText(producto?.marca)
-                precioEliminarTv.setText(producto?.precio.toString())
-                disponibleEliminarEd.isChecked = producto?.disponible == true
+                val baseDeDatos = ProductosSQLiteOpenHelper(this@EliminarActivity, ProductosSQLiteOpenHelper.nombreBaseDeDatos, null, ProductosSQLiteOpenHelper.version)
+                val producto: Productos? = baseDeDatos.buscarProductoPorNombre(nombre)
+                baseDeDatos.cerrarConexion()
+
+                if (producto == null) {
+                    Toast.makeText(this, "NO SE HA ENCONTRADO EL PRODUCTO $nombre", Toast.LENGTH_LONG).show()
+                }
+                else {
+                    productoId = producto.id
+                    nomEliminarTv.setText(producto?.nombre)
+                    marcaEliminarTv.setText(producto?.marca)
+                    precioEliminarTv.setText(producto?.precio.toString())
+                    disponibleEliminarEd.isChecked = producto?.disponible == true
+
+                    // aqui obtenemos el nombre de la categoria en base a su ID, y luego buscamos dicha categoria en el Spinner
+                    // usando el indexOfFirst, que retorna la posicion de la primera instancia donde encontremos la categoria
+
+                    // La documentatcion del indexOfFirst dice: "Returns index of the first element matching the given"
+                    val nombreCategoria = ProductosSQLiteOpenHelper.obtenerNombreCategoria(producto.categoria_id)
+                    val posicionCategoria = ProductosSQLiteOpenHelper.categorias.indexOfFirst { it.id == producto.categoria_id }
+                    if (posicionCategoria != -1) {
+                        espinerEliminarEd.setSelection(posicionCategoria)
+                    }
+                }
             }
         }
 

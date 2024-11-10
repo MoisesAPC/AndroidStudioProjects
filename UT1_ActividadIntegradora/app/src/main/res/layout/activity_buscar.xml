@@ -14,6 +14,8 @@
         android:ems="10"
         android:hint="Nombre del producto"
         android:inputType="text"
+        android:maxLength="50"
+        android:maxLines="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"

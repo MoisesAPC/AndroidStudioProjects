@@ -73,17 +73,30 @@ class InsertarActivity : AppCompatActivity() {
         inicializarSpinnerCategorias(categoriaIdSpinner, ProductosSQLiteOpenHelper.categorias)
 
         insertarSubmitButton.setOnClickListener {
-            val baseDeDatos = ProductosSQLiteOpenHelper(this@InsertarActivity, ProductosSQLiteOpenHelper.nombreBaseDeDatos, null, ProductosSQLiteOpenHelper.version)
-            baseDeDatos.insertarProducto(
-                nombreEditText.text.toString(),
-                marcaEditText.text.toString(),
-                precioEditText.text.toString().toDouble(),
-                categoriaSeleccionadaId,
-                disponibleCheckbox.isChecked
-            )
-            baseDeDatos.cerrarConexion()
-            limpiar(nombreEditText, marcaEditText, precioEditText, disponibleCheckbox)
-            Toast.makeText(this, "INSERCIÓN CORRECTA", Toast.LENGTH_SHORT).show()
+            if (!nombreEditText.text.toString().isEmpty() &&
+                !marcaEditText.text.toString().isEmpty() &&
+                !precioEditText.text.toString().isEmpty()) {
+
+                val baseDeDatos = ProductosSQLiteOpenHelper(
+                    this@InsertarActivity,
+                    ProductosSQLiteOpenHelper.nombreBaseDeDatos,
+                    null,
+                    ProductosSQLiteOpenHelper.version
+                )
+                baseDeDatos.insertarProducto(
+                    nombreEditText.text.toString(),
+                    marcaEditText.text.toString(),
+                    precioEditText.text.toString().toDouble(),
+                    categoriaSeleccionadaId,
+                    disponibleCheckbox.isChecked
+                )
+                baseDeDatos.cerrarConexion()
+                limpiar(nombreEditText, marcaEditText, precioEditText, disponibleCheckbox)
+                Toast.makeText(this, "INSERCIÓN CORRECTA", Toast.LENGTH_SHORT).show()
+            }
+            else {
+                Toast.makeText(this, "ERROR: SE HAN ENCONTRADO STRINGS VACÍAS", Toast.LENGTH_SHORT).show()
+            }
         }
 
         insertarVolverButton.setOnClickListener {

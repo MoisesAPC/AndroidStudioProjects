@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayoutListaProductosEntrada"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="280dp"
     android:orientation="vertical"
     app:layoutDescription="@xml/activity_listar_producto_entrada_scene">
 
@@ -42,5 +42,11 @@
         android:layout_height="wrap_content"
         android:enabled="false"
         android:text="¿Disponible?" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="16dp"
+        android:background="?android:attr/listDivider" />
 
 </LinearLayout>

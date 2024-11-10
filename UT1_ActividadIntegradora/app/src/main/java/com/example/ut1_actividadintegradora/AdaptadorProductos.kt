@@ -22,7 +22,9 @@ class AdaptadorProductos(private val datos: List<Productos>, private val clickLi
             tvNombre.text = "Nombre: ${productos.nombre}"
             tvMarca.text = "Marca: ${productos.marca}"
             tvPrecio.text = "Precio: ${productos.precio}€"
-            tvCategoria.text = "Categoría ID: ${productos.categoria_id}"
+
+            val nombreCategoria = ProductosSQLiteOpenHelper.obtenerNombreCategoria(productos.categoria_id)
+            tvCategoria.text = "Categoría: ${nombreCategoria}"
 
             if (productos.disponible)
                 tvDisponible.isChecked = true
