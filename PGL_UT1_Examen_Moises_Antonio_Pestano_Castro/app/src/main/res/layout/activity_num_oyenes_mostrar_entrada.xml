@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/numOyentestv"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layoutDescription="@xml/activity_num_oyenes_mostrar_entrada_scene">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+
+    <TextView
+        android:id="@+id/nomtv"
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/numOyentes_tv"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/tipotv"
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/frecuenciatv"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:text="TextView" />
+</LinearLayout>
