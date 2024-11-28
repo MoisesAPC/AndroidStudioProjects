@@ -7,6 +7,7 @@ import androidx.compose.runtime.mutableStateListOf
 data class Contacto(val nombre: String, val email: String)
 
 // Definimos la lista de contactos para la lista
+// Tiene que ser mutable para que se le puedan cambiar los valores en tiempo real
 val contactos = mutableStateListOf<Contacto>(
     Contacto("Martínez Iñigo", "imarti@gmail.com"),
     Contacto("Hermoso Mario", "mhermo@gmail.com"),
