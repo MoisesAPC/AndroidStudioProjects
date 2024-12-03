@@ -45,8 +45,14 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
+import com.google.maps.android.compose.MarkerState
+import com.google.maps.android.compose.rememberCameraPositionState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import androidx.compose.foundation.layout.fillMaxSize
+import com.google.maps.android.compose.GoogleMap
+import com.google.maps.android.compose.Marker
+import com.google.maps.android.compose.rememberCameraPositionState
 
 /**
  * "Scaffold" es el andamiaje (la estructura de la aplicación)
@@ -202,7 +208,7 @@ fun PantallaMapa() {
         Marker(
             state = MarkerState(position = coordenadasAuditorio),
             title = "Teatro Auditorio de Agüimes",
-            snipper = "Marcador en el Teatro Auditorio de Agüimes"
+            snippet = "Marcador en el Teatro Auditorio de Agüimes"
         )
     }
 }
