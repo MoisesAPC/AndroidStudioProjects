@@ -391,7 +391,7 @@ fun PantallaTodos() {
         // Añadimos un margen superior. Sino lo hacemos,
         // la primera entrada no se verá porque se renderizará por detrás del
         // menú superior de la aplicación (donde pone "MyApp")
-        contentPadding = PaddingValues(top = 80.dp)
+        contentPadding = PaddingValues(top = 100.dp)
     ) {
         // Itera en el array "listaProductos" y muestra todas sus entradas
         // usando la función "MostrarProducto"
