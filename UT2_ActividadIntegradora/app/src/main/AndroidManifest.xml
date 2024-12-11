@@ -2,11 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Para el funcionamiento de los mapas -->
-    <meta-data
-        android:name="com.google.android.geo.API_KEY"
-        android:value="AIzaSyCogIkrB2pgaXvnB2zHQZzg454vScakT_o" />
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -17,6 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UT2_ActividadIntegradora"
         tools:targetApi="31">
+
+        <!-- Aquí importamos la API de Google Maps -->
+        <!-- Ponemos la API key en el campo "value" -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCogIkrB2pgaXvnB2zHQZzg454vScakT_o" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
