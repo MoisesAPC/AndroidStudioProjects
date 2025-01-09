@@ -11,7 +11,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.ut3_actividad1.ui.theme.UT3_Actividad1Theme
+import com.example.ut3_actividad1.view.PostListScreen
+import com.example.ut3_actividad1.viewmodel.PostViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,28 +23,12 @@ class MainActivity : ComponentActivity() {
         setContent {
             UT3_Actividad1Theme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    // Esta aplicación mostrará los contenidos de https://jsonplaceholder.typicode.com/posts
+                    // en una lista
+                    val viewModel = PostViewModel()
+                    PostListScreen(viewModel)
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    UT3_Actividad1Theme {
-        Greeting("Android")
     }
 }

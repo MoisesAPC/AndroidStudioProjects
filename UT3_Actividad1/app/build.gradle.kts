@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.ut3_actividad1"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.ut3_actividad1"
@@ -66,4 +66,14 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    // Gson serializacion
+    implementation("com.google.code.gson:gson:2.8.8")
+    // OkHttp
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.1")
+    // View Model
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
 }
