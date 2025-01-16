@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "1074970272442",
+    "project_id": "proyectomoises-6f50e",
+    "storage_bucket": "proyectomoises-6f50e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1074970272442:android:0b6125188810228d9bd883",
+        "android_client_info": {
+          "package_name": "com.example.pgl_ut2_examen_moises_antonio_pestano_castro"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCntmwBVRC9Yssps18R5a_4TUXxSLDLlfA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1074970272442:android:c891af20f66ffd769bd883",
+        "android_client_info": {
+          "package_name": "com.example.ut2_actividad5"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCntmwBVRC9Yssps18R5a_4TUXxSLDLlfA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1074970272442:android:dc9a9b9dbd3ca9c19bd883",
+        "android_client_info": {
+          "package_name": "com.example.ut2_actividadintegradora"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCntmwBVRC9Yssps18R5a_4TUXxSLDLlfA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
