@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.example.pgl_ut2_examen_moises_antonio_pestano_castro"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.pgl_ut2_examen_moises_antonio_pestano_castro"
